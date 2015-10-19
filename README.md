@@ -57,7 +57,7 @@ COMPLETED 1. Add an event listener for "keypress" and detect when then return ke
 COMPLETED 1. When return key is detected, you'll create a new message (*see details below*).
 COMPLETED 1. Create a button to clear all messages.
 COMPLETED 1. When the user clicks the clear messages button, all current chat messages should be removed from the application.
-1. If there are no messages, then the clear messages button should be disabled (*see example above*).
+COMPLETED 1. If there are no messages, then the clear messages button should be disabled (*see example above*).
 1. The navigation bar should remain at the top of the screen, even if the contents of the page start to scroll.
 
 ### Options
@@ -67,7 +67,7 @@ COMPLETED 1. When the user clicks the clear messages button, all current chat me
 1. If the user unchecks the box, the background color should change back to white with black text for messages.
 
 ### Messages
-1. When the user presses the return key in the message field, create a `<div>` element in the DOM, below the input field that will hold all messages as they get created.
+COMPLTED 1. When the user presses the return key in the message field, create a `<div>` element in the DOM, below the input field that will hold all messages as they get created.
 1. The message should have a button displayed after it with the text "Delete" inside of it.
 1. When the delete button next to a message is clicked, only that message should be removed from the DOM.
   
