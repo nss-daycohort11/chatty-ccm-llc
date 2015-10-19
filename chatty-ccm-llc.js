@@ -1,19 +1,35 @@
-
-function postMessage () {
-	newMessageElement.style.backgroundColor = "red";;
-}
-
-// Add an event listener for "keypress" and detect when then return key has been pressed in the message field.
+// Add new message handler
 var newMessageElement = document.getElementById("newMessage");
+newMessageElement.onkeyup=postMessage;
 
-// var messagesContainerElement = document.getElementByID("messages-container");
+function postMessage(event) {
+	// DEBUG console.log("in postMessage");
+	// DEBUG console.log(event.which);
+	var message = newMessageElement.value;
+	var messagesElement = document.getElementById("messages-container");
 
-// newMessageElement.addEventListener("keyup", postMessage(event));
-newMessageElement.onkeyup(postMessage(event));
-
- /*
-function postMessage() {
-	//create new message in messages-container
-    document.getElementById("messages-container").style.backgroundColor = "red";
+	if (event.which===13) {
+		//DEBUG console.log("creating new message");
+		//DEBUG console.log(message);
+		
+		// post message to DOM
+		 messagesElement.innerHTML += "<div>"+message+"</div>";//+delete message button;
+		 // Clear new message box of user text
+		 newMessageElement.value = "";
+		 // Enable clear messages button
+		 //DEBUG console.log(document.getElementById("clearMessagesButton"))
+		 // document.getElementById("clearMessagesButton").setAttribute("disabled", true);
+		 document.getElementById("clearMessagesButton").disabled = false;
+	}
 }
-*/
+
+// Clear messages handler
+// get clear-messages button element
+var clearMessagesButtonElement = document.getElementById("clearMessagesButton");
+clearMessagesButtonElement.onclick=clearMessages;
+
+function clearMessages(event) {
+	var messagesElement = document.getElementById("messages-container");
+	messagesElement.innerHTML = "";
+	document.getElementById("clearMessagesButton").disabled = true;
+}

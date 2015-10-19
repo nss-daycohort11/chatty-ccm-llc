@@ -12,12 +12,16 @@
 		<img alt="Chatty CCM LLC Logo" src="https://www.mobigyaan.com/wp-content/uploads/2013/02/We-Chat-Logo.jpg" height="100px" width="100px">
 	</div>
 	<input type="text" placeholder="Enter message" id="newMessage">
-	<input type="button" value="Clear Messages">
+	<input type="button" value="Clear Messages" id="clearMessagesButton" disabled>
 </header>
 	<input type="checkbox">Dark Theme
 	<input type="checkbox">Large Text
+	
+	<!-- Container for messages -->
 	<h1>Messages:</h1>
-	<div id="messages-container"></div>
+	<div id="messages-container">
+		<!-- placeholder for messages -->
+	</div>
 	<script src="chatty-ccm-llc.js"></script>
 </body>
 </html>
