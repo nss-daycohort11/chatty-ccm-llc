@@ -62,12 +62,12 @@ COMPLETED 1. If there are no messages, then the clear messages button should be 
 
 ### Options
 
-1. Create two checkboxes below the message input field. One labeled "Dark theme" and the other labeled "Large text".
+COMPLETED 1. Create two checkboxes below the message input field. One labeled "Dark theme" and the other labeled "Large text".
 1. When the user clicks on the dark theme checkbox, change the background color of your application to a dark gray, and the font color for messages should be white(ish)... you pick.
 1. If the user unchecks the box, the background color should change back to white with black text for messages.
 
 ### Messages
-COMPLTED 1. When the user presses the return key in the message field, create a `<div>` element in the DOM, below the input field that will hold all messages as they get created.
-1. The message should have a button displayed after it with the text "Delete" inside of it.
-1. When the delete button next to a message is clicked, only that message should be removed from the DOM.
+COMPLETED 1. When the user presses the return key in the message field, create a `<div>` element in the DOM, below the input field that will hold all messages as they get created.
+COMPLETED 1. The message should have a button displayed after it with the text "Delete" inside of it.
+COMPLETED 1. When the delete button next to a message is clicked, only that message should be removed from the DOM.
   

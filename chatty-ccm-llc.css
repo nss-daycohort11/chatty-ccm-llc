@@ -12,3 +12,11 @@ header div{
 	height: 200px;
 	width: 80%;
 }
+
+.darkTheme {
+	background-color: darkgrey;
+	color: white;
+}
+.largeText {
+	font-size: 2em;
+}
