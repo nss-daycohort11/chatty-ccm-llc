@@ -3,13 +3,7 @@ document.querySelector("body").addEventListener("click", function(event) {
 	
 	// Handle the click event on any DOM element with a certain class
 	if (event.target.className === "clearMessageBtn") {
-	  //console.log("You clicked on an \"clearMessageBtn\" element");
-	  console.log("event.target.parentNode",event.target.parentNode);
-	  console.log("event.target.parentNode.outerHTML \n",event.target.parentNode.outerHTML);
-	  console.log("event.target.parentNode innerHTML \n",event.target.parentNode.innerHTML);
-
 	  // Delete div element including message and button
-	  //event.target.parentNode.outerHTML = "";
 	   event.target.parentNode.parentNode.removeChild(event.target.parentNode);
 	}
 
@@ -17,8 +11,17 @@ document.querySelector("body").addEventListener("click", function(event) {
 	if (event.target.type === "checkbox") {
 		// toggle darkTheme class on "messages-container element"
 		if (event.target.id === "darkTheme") {
-			document.getElementById("messages-container").classList.toggle("darkTheme");
-	  	}
+			// DEBUG console.log("checked darkTheme")
+			var messages = document.getElementsByClassName("message");
+			for (var i = 0; i < messages.length; i++) {
+				console.log(messages[i].classList);
+				messages[i].classList.toggle("darkTheme");
+				console.log(messages[i].classList);
+			}
+		}
+
+		//document.getElementsByClassName("message").classList.toggle("darkTheme");
+
 		// toggle largeText class on "messages-container element"
 		else if (event.target.id === "largeText") {
 			document.getElementById("messages-container").classList.toggle("largeText");
@@ -40,8 +43,11 @@ function postMessage(event) {
 		//DEBUG console.log("creating new message");
 		//DEBUG console.log(message);
 		
+		// clear "no items" header from DOM before loading first message
+		//messagesElement.innerHTML = "";
+		
 		// post message to DOM
-		 messagesElement.innerHTML += "<div>"+message+" <input type=\"button\" value=\"Delete\" class=\"clearMessageBtn\"></button></div>";
+		 messagesElement.innerHTML = "<div class=\"message\">"+message+"<input type=\"button\" value=\"Delete\" class=\"clearMessageBtn\"></button></div>"+ messagesElement.innerHTML;
 		 // Clear new message box of user text
 		 newMessageElement.value = "";
 		 // Enable clear messages button
@@ -59,7 +65,7 @@ clearMessagesButtonElement.onclick=clearMessages;
 
 function clearMessages(event) {
 	var messagesElement = document.getElementById("messages-container");
-	messagesElement.innerHTML = "";
+	messagesElement.innerHTML = "<p class=\"message\"><em>No more items</em></p>";
 	document.getElementById("clearMessagesButton").disabled = true;
 }
 

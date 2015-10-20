@@ -1,20 +1,94 @@
 body {
-	height: 2000px;
+	font-family: "Helvetica Neue",sans-serif;
+	background-image: url("http://www.psdgraphics.com/file/blue-scratched-texture.jpg");
+	color: white;
+	height: 80%;
+	min-width: 400px;
 }
-
-header div{
+header {
+	background-color: navy;
+	min-width: 400px;
+	width:100%;
+	position: fixed;
+	margin: 0;
+	top: -5px;
+	border-radius: 10px;
+	z-index: 500;
+}
+#logo {
+	height: 100px;
+}
+header h1 {
+	display: inline-block;
+	margin: .3em 1em;
+	width: auto;
+	height: 100%;
+	padding: 0;
+}
+header img {
+	top: 2%;
+	left: 2%;
+	float: left;
+	border-radius: 10px;
+}
+/*Iniviisible class */
+.invisible {
+	position: static;
+	visibility: hidden;
+}
+#messages-container {
+	color: black;
+	border: 5px solid #009;
+	background-color: #eee;
+	opacity: 0.8;
+	margin: 0 auto 5% auto;
+	height: 100%;
+	width: 80%;
+	padding: 1em 2em;
+	overflow:auto;
+}
+#messages-container p {
+	color: black;
+	background-color: white;
+}
+.messageInput {
+	background-color: white;
+	position: absolute; 
+	right: 0;
+	top: 0;
+	width: 400px;
+	height: 90px;
+	z-index: 900;
+	border-radius: 10px;
+}
+#newMessage {
+	border-radius: 10px;
+	display: inline-block;
+	margin: 0;
+	width: 395px;
+	height: 65%;
+	border: 1px solid #ccc;
+	resize: none;
+}
+#clearMessagesButton {
 	display: inline-block;
 }
-
-#messages-container {
-	border: 1px solid black;
-	margin: 0 auto;
-	height: 200px;
-	width: 80%;
+.message {
+	background-color: #fff;
+	padding: 10px;
+	margin: 5px 0;
 }
-
+footer {
+	color: navy;
+	padding: 0.8em;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: #fff;
+}
+/* Checkbox theme styling */
 .darkTheme {
-	background-color: darkgrey;
+	background-color: #333;
 	color: white;
 }
 .largeText {
