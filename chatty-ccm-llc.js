@@ -1,6 +1,8 @@
-document.querySelector("body").addEventListener("click", function(event) {
-  console.log(event);
-	
+$(document).ready(function() {
+
+
+
+$("body").click(function(event) {
 	// Handle the click event on any DOM element with a certain class
 	if (event.target.className === "clearMessageBtn") {
 	  // Delete div element including message and button
@@ -14,26 +16,25 @@ document.querySelector("body").addEventListener("click", function(event) {
 		// toggle darkTheme class on "messages-container element"
 		if (event.target.id === "darkTheme") {
 			// DEBUG console.log("checked darkTheme")
-			var messages = document.getElementsByClassName("message");
-			for (var i = 0; i < messages.length; i++) {
-				console.log(messages[i].classList);
-				messages[i].classList.toggle("darkTheme");
-				console.log(messages[i].classList);
-			}
+			var messages = $(".message");
+			messages.toggleClass("darkTheme");
+			// for (var i = 0; i < messages.length; i++) {
+			// 	messages[i].classList.toggle("darkTheme");
+			// }
 		}
 
 		//document.getElementsByClassName("message").classList.toggle("darkTheme");
 
 		// toggle largeText class on "messages-container element"
 		else if (event.target.id === "largeText") {
-			document.getElementById("messages-container").classList.toggle("largeText");
+			$("#messages-container").toggleClass("largeText");
 		}
 	}
 });
 
 // Add new message handler
-var newMessageElement = document.getElementById("newMessage");
-newMessageElement.onkeyup=postMessage;
+var newMessageElement = $("#newMessage");
+newMessageElement.keyup(postMessage);
 
 // message counter
 var msgCounter = 0;
@@ -41,8 +42,8 @@ var msgCounter = 0;
 // Function to post new messsage
 function postMessage(event) {
 	// Get messages element
-	var message = newMessageElement.value;
-	var messagesElement = document.getElementById("messages-container");
+	var message = newMessageElement.val();
+	var messagesElement = $("#messages-container");
 
 	// Handler for 'enter' keypress
 	if (event.which===13) {
@@ -64,25 +65,29 @@ function postMessage(event) {
 		Mins = Stamp.getMinutes();
 		if (Mins < 10) {Mins = "0" + Mins;}	
 		var timestamp =  Hours + ":" + Mins + Time  + " "  + (Stamp.getMonth() + 1) +"/"+Stamp.getDate()+ "/"+ year;
-	
+
 		// post message to DOM
-		 messagesElement.innerHTML = "<div class=\"message\"><p>"+message+"</p><input type=\"button\" value=\"Delete\" class=\"clearMessageBtn\"> <time>"+timestamp+"</time></button></div>"+ messagesElement.innerHTML;
+		var messageHTML = "<div class=\"message\"><p>"+message+"</p><input type=\"button\" value=\"Delete\" class=\"clearMessageBtn\"> <time>"+timestamp+"</time></button></div>"+messagesElement.html();
+		console.log(typeof messageHTML);
+		console.log(messageHTML)
+		 messagesElement.html(messageHTML);
 
 		 // increase message counter
 		 msgCounter++;
 		 console.log(msgCounter);
 
 		 // Delete excessive messages over 20
-		 if (msgCounter >20) {
+		 if (msgCounter === 1) {$(".message:last").remove();}
+		 else if (msgCounter > 20) {
 		 	// remove last child node
-		 	messagesElement.removeChild(messagesElement.childNodes[msgCounter-1])
+		 	$(".message:last").remove();
 		 	msgCounter = 20;
 		 }
 
 		 // Clear new message box of user text
-		 newMessageElement.value = "";
+		 newMessageElement.val("");
 		 // Enable clear messages button
-		 document.getElementById("clearMessagesButton").disabled = false;
+		 $("#clearMessagesButton").removeAttr("disabled");
 	}
 }
 
@@ -93,9 +98,9 @@ var clearMessagesButtonElement = document.getElementById("clearMessagesButton");
 clearMessagesButtonElement.onclick=clearMessages;
 
 function clearMessages(event) {
-	var messagesElement = document.getElementById("messages-container");
-	messagesElement.innerHTML = "<p class=\"message\"><em>No more items</em></p>";
-	document.getElementById("clearMessagesButton").disabled = true;
+
+	$("#messages-container").html("<p class=\"message\"><em>No more items</em></p>");
+	$("#clearMessagesButton").attr("disabled",true);
 	msgCounter = 0;
 }
 
@@ -105,3 +110,4 @@ function clearMessages(event) {
 2. <element name>.<event> = <function name>;
 3. function <function name> {      };
 */
+});

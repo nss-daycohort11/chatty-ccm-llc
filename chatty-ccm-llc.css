@@ -51,6 +51,7 @@ header img {
 	color: black;
 	background-color: white;
 	font-size: 0.8em;
+	margin: 0;
 }
 #messages-container time {
 	font-size: 0.5em;
